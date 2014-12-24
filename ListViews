@@ -1,0 +1,21 @@
+public class ListViews 
+{
+   private Set<Account> setAcc = new Set<Account>();
+   public List<String> lstViewsName {get;set;}
+	
+	public ListViews()
+	{
+		ApexPages.Standardsetcontroller objSSC = new ApexPages.Standardsetcontroller(database.getQueryLocator('select Id,Name from Account'));
+		lstViewsName = new List<String>();
+		//Iterating through all the Views present in the Object
+		for(Selectoption viewOption :  objSSC.getListViewOptions())
+		{
+			lstViewsName.add(viewOption.getLabel());
+			
+			objSSC.setFilterId(viewOption.getValue());
+			
+			//Getting all the Specific Records to that Particular View
+			setAcc.addAll((List<Account>)objSSC.getRecords());
+		}
+	}
+}
