@@ -1,0 +1,18 @@
+public class encapsulator
+{
+public class person
+{
+private string name, phone;
+public person(string name, string phone)
+{
+this.name = name;
+this.phone = phone;
+}
+}
+public encapsulator()
+{
+person myself = new person('vishnu', '1234567890');
+myself.name = 'ram kumar';
+system.debug('>>>>>>>>>>>>>>>>>>>' + myself.name);
+}
+}
